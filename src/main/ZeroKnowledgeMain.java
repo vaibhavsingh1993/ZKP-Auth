@@ -11,8 +11,8 @@ import util.Utils;
 public class ZeroKnowledgeMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+
+		// Assumed single Client.
 		System.out.println("Input your password");
 		BufferedReader input = new BufferedReader (new InputStreamReader (System.in));
 		
@@ -21,12 +21,12 @@ public class ZeroKnowledgeMain {
 			String inputString = input.readLine();
 			x = Integer.parseInt(inputString);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		Utils util = new Utils();
 		util.init();
+		// Random no a.
 		BigInteger p = util.generatePrime(8);
 		BigInteger g = util.getGenerator(8);
 		

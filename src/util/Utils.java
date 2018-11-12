@@ -2,12 +2,15 @@ package util;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Random;
 
 public class Utils {
 	private static SecureRandom rand = null;
 	
 	public void init() {
-		rand = new SecureRandom();
+		if (rand == null) {
+			rand = new SecureRandom();
+		}
 	}
 	
 	public BigInteger generatePrime(int bits) {
@@ -31,6 +34,20 @@ public class Utils {
 	public BigInteger generateRandom(int bits) {
 	    return new BigInteger(bits, rand);
 	}
+
+	public int getRandom(int min, int max) {
+        Random rand = new Random();
+	    return min + rand.nextInt(max);
+    }
+
+    public int getRandom( int max) {
+        Random rand = new Random();
+        return rand.nextInt(max);
+    }
+
+    public String getHash(String seed) {
+	    return Integer.toString(Integer.parseInt(seed) % 32);
+    }
 	
 	public long getFunctionValue(BigInteger p, BigInteger g, int x) {
 		return Math.floorMod(powerN(g.intValue(), x), p.longValue());

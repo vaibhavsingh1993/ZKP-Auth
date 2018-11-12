@@ -14,7 +14,7 @@ public interface Server {
      * Generates random public key for the server upon server bootstrapping.
      * TODO: This method should return pair of G, g0.
      */
-    public String generatePublicKey();
+    public ServerKey generatePublicKey();
 
     /**
      *  Create a challenge for the client from client's username
@@ -22,4 +22,10 @@ public interface Server {
      */
     public Challenge generateChallenge(String username);
 
+    /**
+     * Store the client public keys.
+     * @param username
+     * @param publicKey
+     */
+    public void storeClientKey(String username, String publicKey);
 }
